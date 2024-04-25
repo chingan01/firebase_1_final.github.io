@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基礎代謝率(BMR)計算機 | TDEE計算機</title>
+    <style>
+        /* 樣式 */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .center {
+          text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="center">
+        <h1>基礎代謝率(BMR)計算機 | TDEE計算機</h1>
+        </div>
+        <h2>基礎代謝率(BMR)計算機</h2>
+        <p>BMR 指的是人體在休息狀態下維持新陳代謝所需的熱量，即使整天躺著不動也會消耗的最低熱量。</p>
+        <p>BMR 會隨著年齡增加或體重減輕而降低，而隨著肌肉量增加而上升。</p>
+        <form id="bmrForm">
+            <label for="gender">性別:</label>
+            <select id="gender" required>
+                <option value="male">男性</option>
+                <option value="female">女性</option>
+            </select><br>
+
+            <label for="age">年齡:</label>
+            <input type="number" id="age" required><br>
+            
+            <label for="height">身高(cm):</label>
+            <input type="number" id="height" required><br>
+            
+            <label for="weight">體重(kg):</label>
+            <input type="number" id="weight" required><br>
+
+            <button type="button" onclick="calculateBMR()">計算</button>
+        </form>
+
+        <div id="results"></div>
+    </div>
+
+    <div class="container">
+        <h1>影響基礎代謝率的4大因素</h1>
+        <h2>根據計算公式可以知道，影響基礎代謝率最大的變數有4個：</h2>
+        <p>1.性別：男性通常比同年齡和體重的女性擁有更少體脂肪和更多肌肉，這會燃燒更多卡路里。</p>
+        <p>2.身高：身高愈高，基礎代謝率就愈高。</p>
+        <p>3.體重：體重增加，基礎代謝率也增加。</p>
+        <p>4.年齡：年齡越大，基礎代謝率就跟著下降。年老後，人們會失去肌肉，身體的重量更多來自於脂肪，而脂肪則減緩卡路里燃燒。</p>
+        <h2>由此可見，肌肉量在影響基礎代謝率上很重要，肌肉較多的人，即使在睡覺、休息時，也會燃燒更多卡路里。</p>
+    </div>
+
+    <div class="container">
+        <h2>TDEE計算機</h2>
+        <label for="tdee">請輸入您的TDEE數值（大卡）:</label><br>
+    <input type="number" id="tdee" name="tdee" required><br><br>
+    <button type="button" onclick="calculateFoodPortions()">計算各類食物份量</button>
+
+    <h3>公式及各類食物份量參考：</h3>
+
+    <p id="formula"></p>
+    <p id="grains"></p>
+    <p id="protein"></p>
+    <p id="dairy"></p>
+    <p id="vegetables"></p>
+    <p id="fruits"></p>
+    <p id="fatsNutsSeeds"></p>
+ 
+    <div class="text-right mt-3" style="width: 100%;">想知道六大類怎麼吃？ <a
+        href="file:///C:/Users/user/OneDrive/%E6%A1%8C%E9%9D%A2/firebase3(firebase2%E4%BB%A5%E5%8F%8Aplugins%E7%9A%84%E7%89%88%E6%9C%AC%E7%B5%90%E5%90%88)/%E8%AA%8D%E8%AD%986%E5%A4%A7%E9%A1%9E-3.html" class="btn btn-success "
+        style="background-color:#28a745; ">▸▸ 認識六大類 🍚</a></div>
+			<p class="mt-4 small">* 計算結果僅適用於一般成人，糖尿病、腎臟病等特殊狀況者請諮詢營養師、專業醫事人員。</p>
+	</div>
+
+    <div class="container">
+        <h1>每日總熱量消耗(TDEE)</h1>
+        <p>TDEE 是身體一整天下來，包括基礎代謝、活動量、吃東西所消耗的熱量。</p>
+        <p>不同的生活型態需要的熱量也不一樣，當每天攝取的熱量和 TDEE 相等，便達到「熱量平衡」。</p>
+        <img src="image6-1.jpg" alt="每日總熱量消耗(TDEE)">
+        <h2>每日總熱量消耗（Total daily energy expenditure，簡寫為TDEE），是以下3項數值的加總：</h2>
+        <p>1.基礎代謝率（BMR）：用來維持各組織器官的基礎代謝，佔每日總熱量消耗約60～70％。</p>
+        <p>2.每日活動量（TEA）：做體能活動（運動、活動）時耗去的能量，佔每日總熱量消耗為20～30％。</p>
+        <p>3.食物熱效應（TEF）：用來消化食物時耗去的能量，佔每日總熱量消耗的10％。</p>
+    </div>
+
+    <script>
+        function calculateBMR() {
+            var gender = document.getElementById("gender").value;
+            var age = parseInt(document.getElementById("age").value);
+            var height = parseInt(document.getElementById("height").value);
+            var weight = parseInt(document.getElementById("weight").value);
+
+            // Calculate BMR using Mifflin-St Jeor formula
+            var genderFactor = (gender === 'male') ? 5 : -161;
+            var bmr = (10 * weight) + (6.25 * height) - (5 * age) + genderFactor;
+            
+            // Display the results
+            var resultsElement = document.getElementById("results");
+            resultsElement.innerHTML = "<h2>計算結果</h2>";
+            resultsElement.innerHTML += "<p>計算公式(Mifflin-St Jeor formula): 9.99 × 體重 + 6.25 × 身高 - 4.92 × 年齡 + (166 x 性別(男1 女0) - 161) = 基礎代謝率(BMR)</p>";
+            resultsElement.innerHTML += "<p>男性=（13.7×體重kg）+（5.0×身高cm）-（6.8×年齡）+ 66 / 女性=（9.6×體重kg）+（1.8×身高cm）-（4.7×年齡）+ 655";
+            resultsElement.innerHTML += "<p>這兩個公式算出來的結果，就是身體維持基礎運轉時，一天所需要的卡路里。</p>";    
+            resultsElement.innerHTML += "<p>基礎代謝率 (BMR) 計算結果: " + bmr.toFixed(2) + " </p>";
+        }
+
+        // Listen for Enter key press event
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                calculateBMR();
+            }
+        });
+    </script>
+
+    <script>
+    function calculateFoodPortions() {
+        var tdee = parseFloat(document.getElementById("tdee").value);
+    
+        // 根據TDEE數值計算各類食物的份量
+        var grainsPortion = Math.round((tdee / 2500) * 16 * 10) / 10;
+        var proteinPortion = Math.round((tdee / 2500) * 7 * 10) / 10;
+        var dairyPortion = Math.round((tdee / 2500) * 1.5 * 10) / 10;
+        var vegetablesPortion = Math.round((tdee / 2500) * 5 * 10) / 10;
+        var fruitsPortion = Math.round((tdee / 2500) * 4 * 10) / 10;
+        var fatsNutsSeedsPortion = Math.round((tdee / 2500) * 7 * 10) / 10;
+    
+        // 顯示結果
+        document.getElementById("formula").innerHTML = "TDEE = " + tdee + "大卡";
+        document.getElementById("grains").innerHTML = "全榖雜糧類: " + grainsPortion + " 份";
+        document.getElementById("protein").innerHTML = "豆魚蛋肉類: " + proteinPortion + " 份";
+        document.getElementById("dairy").innerHTML = "乳品類: " + dairyPortion + " 份";
+        document.getElementById("vegetables").innerHTML = "蔬菜類: " + vegetablesPortion + " 份";
+        document.getElementById("fruits").innerHTML = "水果類: " + fruitsPortion + " 份";
+        document.getElementById("fatsNutsSeeds").innerHTML = "油脂與堅果種子類: " + fatsNutsSeedsPortion + " 份";
+    }
+    </script>
+</body>
+</html>

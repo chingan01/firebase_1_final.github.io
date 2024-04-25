@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>身體指數(BMI)計算器</title>
+</head>
+<body>
+    <h1>身體指數(BMI)計算器</h1>
+    <div id="datetime"></div>
+    <p class="small">世界衛生組織建議以身體質量指數 (Body Mass Index, BMI) 來衡量肥胖程度，其計算公式是以體重 (公斤) 除以身高 (公尺) 的平方。</p>
+    <form id="bmiForm">
+        <div id="app">
+            <section class="calculate">
+                <div class="wrapper">
+                    <div style="text-align:center;">  
+                        <label for="weight">體重（公斤）：</label>
+                        <input type="number" id="weight" required><br>
+                        <label for="height">身高（公分）：</label>
+                        <input type="number" id="height" required><br>
+                        <button type="button" onclick="calculateBMI()">立即計算</button>
+                        <button type="button" onclick="clearResults()" style="background-color: #5e93a8;border-color:#5e93a8;">全部清除</button>
+                        
+                    </div>
+                </div>
+            </section>
+        </div>
+    </form>
+    <div id="results">
+        <h2 class="text-center mt-4" style="font-size: 22px;font-family: 600;">測量紀錄</h2>
+        <ul id="recordList"></ul>
+    </div>
+
+    <div class="col-md-6 pt-80">
+        <p style="text-align: center;margin-top: 16px;font-size: 18px;">我是18歲 (含) 以上的成人，要如何判斷體重是否正常？</p>
+        <ul class="container mt-20">
+            <div class="row bmi-grade">
+                <div class="col-12">
+                    <li>
+                        <b>BMI &lt; <span class="number-style">18.5</span></b> <span class="grade-content"><br>「體重過輕」</span>，需要多運動，均衡飲食，以增加體能，維持健康！
+                    </li>
+                </div>
+                <div class="col-12">
+                    <li>
+                        <b><span class="number-style">18.5</span> ≤ BMI &lt; <span class="number-style">24</span> </b>
+                        <br>恭喜！<span class="grade-content">「健康體重」</span>，要繼續保持！
+                    </li>
+                </div>
+                <div class="col-12">
+                    <li>
+                        <b> <span class="number-style">24</span> ≤ BMI &lt; <span class="number-style">27</span> </b> <span class="grade-content"><br>「體重過重」</span>了，要小心囉，趕快力行「健康體重管理」！
+                    </li>
+                </div>
+                <div class="col-12">
+                    <li>
+                        <b>BMI ≥ <span class="number-style">27</span></b> <span class="grade-content"><br>「肥胖」</span>，需要立刻力行「健康體重管理」囉！
+                    </li>
+                </div>
+            </div>
+            <div style="line-height: 24px;font-size: 12px;color: #808080;padding-left: 15px;">
+                <div id="result"></div>
+            </div>
+
+    <script>
+        var inputCount = 0;
+
+        function calculateBMI() {
+    var weight = parseFloat(document.getElementById("weight").value);
+    var height = parseFloat(document.getElementById("height").value) / 100; // 轉換為米
+    
+    if (weight > 0 && height > 0) {
+        inputCount++; // 增加輸入次數
+
+        var bmi = weight / (height * height);
+        var message;
+
+        if (bmi < 18.5) {
+            message = "體重過輕";
+        } else if (bmi >= 18.5 && bmi < 24) {
+            message = "健康體重";
+        } else if (bmi >= 24 && bmi < 27) {
+            message = "體重過重";
+        } else {
+            message = "肥胖";
+        }
+        
+        var today = new Date();
+        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        var hours = today.getHours();
+        var minutes = today.getMinutes();
+        var seconds = today.getSeconds();
+
+        // 如果分鐘少於 10，則在前面添加零
+        if (minutes < 10) {
+            minutes = '0' + minutes;
+        }
+
+        // 如果秒數少於 10，則在前面添加零
+        if (seconds < 10) {
+            seconds = '0' + seconds;
+        } 
+
+        var time = hours + ":" + minutes + ":" + seconds;
+        var dateTime = date + ' ' + time;
+        
+        var resultElement = document.createElement("p");
+        resultElement.textContent = "第 " + inputCount + " 次計算：您的BMI為：" + bmi.toFixed(2) + "，屬於" + message + "。 體重：" + weight + "公斤，身高：" + height * 100 + "公分 (" + dateTime + ")";
+        document.getElementById("results").appendChild(resultElement);
+    } else {    
+        alert("請輸入有效的數字");
+    }
+}
+
+
+
+        function clearResults() {
+            document.getElementById("results").innerHTML = "";
+            inputCount = 0; // 重置輸入次數
+        }
+
+        function saveData() {
+            var weight = document.getElementById("weight").value;
+            var height = document.getElementById("height").value;
+            var bmi = (weight / ((height / 100) * (height / 100))).toFixed(2);
+            var message;
+
+            if (bmi < 18.5) {
+                message = "體重過輕";
+            } else if (bmi >= 18.5 && bmi < 24) {
+                message = "健康體重";
+            } else if (bmi >= 24 && bmi < 27) {
+                message = "體重過重";
+            } else {
+                message = "肥胖";
+            }
+
+            var today = new Date();
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+            var hours = today.getHours();
+            var minutes = today.getMinutes();
+            var seconds = today.getSeconds();
+
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            var dateTime = date + ' ' + time;
+
+            var record = dateTime + "體重：" + weight + " 公斤，身高：" + height + " 公分，BMI：" + bmi + "，結果：" + message;
+
+            // 如果分鐘少於 10，則在前面添加零
+            if (minutes < 10) {
+                minutes = '0' + minutes;
+            }
+
+            // 如果秒數少於 10，則在前面添加零
+            if (seconds < 10) {
+                seconds = '0' + seconds;
+            } 
+
+            var dateTime = date + ' ' + hours + ':' + minutes + ':' + seconds;
+
+            if (localStorage.getItem("bmiRecords") === null) {
+                localStorage.setItem("bmiRecords", JSON.stringify([record]));
+            } else {
+                var records = JSON.parse(localStorage.getItem("bmiRecords"));
+                records.push(record);
+                localStorage.setItem("bmiRecords", JSON.stringify(records));
+            }
+
+        }
+
+        function initialize() {
+    // Check login status
+    var isLoggedIn = false; // Change this based on user's login status
+
+    if (isLoggedIn) {
+        // Display records
+        document.getElementById("results").style.display = "block";
+        displayRecords();
+    } else {
+        document.getElementById("loginSection").style.display = "block";    
+    }
+
+    // 調用顯示當前日期和時間的函數
+    displayDateTime();
+}
+
+        
+        // Function to display current date and time
+        function displayDateTime() {
+        var now = new Date();
+        var datetimeElement = document.getElementById('datetime');
+        datetimeElement.textContent = '目前日期和時間:' + now.toLocaleString();
+        }
+
+        // Function to display date and time when page loads
+        window.onload = function() {
+        displayDateTime();
+        };
+
+        // Event listener to update date and time when page is refreshed
+        window.onbeforeunload = function() {
+        displayDateTime();
+        };
+
+        // 初始化時顯示歷史紀錄
+        displayRecords();
+
+        // Call initialize function when the page loads
+        window.onload = initialize;
+        
+</script>
+</body>
+</html>

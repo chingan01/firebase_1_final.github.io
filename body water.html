@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>身體水分計算器</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  .container {
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>身體水分計算器</h2>
+  <label for="age">年齡：</label>
+  <input type="number" id="age" min="0" required><br><br>
+  <label for="weight">體重（kg）：</label>
+  <input type="number" id="weight" min="0" required><br><br>
+  <button onclick="calculate()">計算</button><br><br>
+  <div id="result"></div>
+  <div id="advice"></div>
+
+  <script>
+    function calculate() {
+      const age = parseInt(document.getElementById('age').value);
+      const weight = parseFloat(document.getElementById('weight').value);
+
+      if (isNaN(age) || isNaN(weight) || age <= 0 || weight <= 0) {
+        document.getElementById('result').textContent = '請輸入有效的數字';
+        return;
+      }
+
+      let waterRequirement = 0;
+      if (age < 30) {
+        waterRequirement = weight * 40;
+      } else if (age >= 30 && age <= 55) {
+        waterRequirement = weight * 35;
+      } else {
+        waterRequirement = weight * 30;
+      }
+
+      document.getElementById('result').textContent = `你一天需要的水量為 ${waterRequirement.toFixed(0)} ml`;
+
+      displayAdvice(waterRequirement);
+    }
+
+    function displayAdvice(waterRequirement) {
+      let advice = '';
+      if (waterRequirement < 2000) {
+        advice = '你的每日所需水量較低，要記得多喝水以保持身體水分平衡。';
+      } else if (waterRequirement >= 2000 && waterRequirement <= 3000) {
+        advice = '你的每日所需水量正常，繼續保持良好的飲水習慣。';
+      } else {
+        advice = '你的每日所需水量較高，要注意適量喝水，但不要過量。';
+      }
+      document.getElementById('advice').textContent = advice;
+    }
+  </script>
+</div>
+</body>
+</html>

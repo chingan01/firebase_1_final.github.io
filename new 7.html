@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase 登入網站</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>登入</h1>
+  <form id="loginForm">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br>
+    <label for="password">密碼:</label>
+    <input type="password" id="password" name="password" required><br>
+    <button type="submit">登入</button>  
+  </form>
+  
+  <p id="message"></p>
+
+  <script src="http://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"></script>
+  <script src="http://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js"></script>
+  <script>
+    //Firebase 初始化配置
+    var firebaseConfig= {
+      apiKey: "AIzaSyDOWOPhRt7_SHogZNFxQC1kOaOsV46S3p8",
+      authDomain: "test-addd1-b7b30.firebaseapp.com",
+      projectId: "test-addd1-b7b30",
+      storageBucket: "test-addd1-b7b30.appspot.com",
+      messagingSenderId: "86523480822",
+      appId: "1:86523480822:web:8c194288071fd3aa217ad7",
+      measurementId: "G-Y3XSN5RLM9"
+    };
+
+    // 初始化 Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    
+
+    // 獲取登入表單
+    var loginForm = document.getElementById('loginForm');
+    var message = document.getElementById('messagge');
+
+    // 處理登入表單提交事件
+    loginForm.addEventListener('submit', function(event) {
+      event.preventDefault(); // 防止表單自動提交
+    
+      var email = loginForm.email.value;
+      var password = loginForm.password.value;
+
+      // 使用 Firebase 身份驗證服務進行登入
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          //登入成功 , 顯示訊息  
+
+     <script src="http://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"></script>
+     <script src="http://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js"></script>
+     <script>
+       // Firebase 初始化配置
+       var firebaseConfig = {
+         apiKey: "AIzaSyDOWOPhRt7_SHogZNFxQC1kOaOsV46S3p8",
+         authDomain: "test-addd1-b7b30.firebaseapp.com",
+         projectId: "test-addd1-b7b30",
+         storageBucket: "test-addd1-b7b30.appspot.com",
+         messagingSenderId: "86523480822",
+         appId: "1:86523480822:web:8c194288071fd3aa217ad7",
+         measurementId: "G-Y3XSN5RLM9"
+       };
+       
+       // 初始化 Firebase
+       firebase.initializeApp(firebaseConfig);
+       
+       //獲取登入表單
+       var loginForm = document.getElementById('loginForm');
+       var message = document.getElementById('message');
+
+       // 處理登入表單提交事件
+       loginForm.addEventListener('submit', function(event)
+         event.preventDefault();
+
+         var email = loginForm.email.value;
+         var password = loginForm.password.value;
+
+         // 使用 Firebase 身份驗證服務進行登入
+         firebase.auth().signInWithEmailAndPassword(email, password)
+           .then((userCredential) => {
+             //登入成功,顯示訊息
+             message.textContent = "登入成功! ";
+           }}
+           .catch((error) => {
+             //登入失敗,顯示錯誤訊息
+             var errorMessage = error.message;
+             message.textContent = "登入失敗: " + errorMessage;
+           }};
+      }};           
+    </script>
+</body>
+</html>    
