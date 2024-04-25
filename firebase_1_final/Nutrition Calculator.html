@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>營養計算器</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+
+  form {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+  }
+
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  #results {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+
+  span {
+    font-weight: bold;
+    color: #333;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>營養計算器</h1>
+  <form id="nutritionForm">
+    <label for="gender">性別:</label>
+    <select id="gender" name="gender">
+      <option value="male">男性</option>
+      <option value="female">女性</option>
+    </select>
+
+    <label for="age">年齡:</label>
+    <input type="number" id="age" name="age" required>
+
+    <label for="height">身高 (cm):</label>
+    <input type="number" id="height" name="height" required>
+
+    <label for="weight">體重 (kg):</label>
+    <input type="number" id="weight" name="weight" required>
+
+    <label for="activityLevel">活動程度:</label>
+    <select id="activityLevel" name="activityLevel">
+      <option value="sedentary">久坐不動</option>
+      <option value="light">輕度運動</option>
+      <option value="moderate">中度運動</option>
+      <option value="intense">重度運動</option>
+    </select>
+
+    <label for="goal">目標:</label>
+    <select id="goal" name="goal">
+      <option value="fat_loss">減脂</option>
+      <option value="maintain">維持體重</option>
+      <option value="muscle_gain">增肌</option>
+    </select>
+
+    <button type="button" onclick="calculateNutrition()">計算</button>
+  </form>
+
+  <div id="results">
+    <h3>營養建議:</h3>
+    <p>碳水化合物: <span id="carbs"></span> 克</p>
+    <p>蛋白質: <span id="protein"></span> 克</p>
+    <p>脂肪: <span id="fat"></span> 克</p>
+    <p>總熱量: <span id="calories"></span> 千卡</p>
+  </div>
+	</div>     
+    </form>
+
+    <div id="result"></div>
+    <h2 class="text-left mt-4" style="font-size: 22px;font-family: 600;"></h2>
+    <P>計算方式:「每公斤體重Ｘ1.5-2克」，假設體重60公斤的話，則建議每日攝取90-120克的蛋白質。</P>
+    <h2>營養建議</h2>
+    <p>增重(增肌)/減重/維持體重飲食建議！</p>
+    <p>三大營養素有哪些？減重飲食怎樣最有效果？增重(增肌)飲食如何安排？</p>
+    <p>蛋白質、脂肪、碳水化合物，每日飲食比例分配秘訣！</p>
+    <h2>三大營養素</h2>
+        <h2>一.碳水化合物(Carbohydrates)</h2><p>碳水化合物在正常情況下是身體最先轉化使用的能量來源，一克的碳水化合物大約可產生四大卡的熱量，往往也是最容易攝取過量的營養素，但這並不代表吃得越少越好，因為合成肌肉隨然以蛋白質為建材，但能量來原扔然以碳水化合物為主，如果吃得太少將很難維持訓練與日常生活所需的能量。</p><p>一天的建議攝取量：體重每公斤攝取2~3克，試需求增減。</p>
+        <p>一般的碳水化合物：飯、麵、麵包、蕃薯、馬鈴薯、芋頭、南瓜</p>
+        <p>優質蛋白質食物選擇建議(約含X克蛋白質/100克):</p>
+        <p>1.雞肉（16克/100克）</p>
+        <p>2.鮭魚（20克/100克）</p>
+        <p>3.傳統豆腐（8.5克/100克）</p>
+        <p>4.雞蛋（12.7克/100克）</p>
+        <p>5.豆漿（3.6克/100克）</p>
+        <p>6.鯛魚（18.2克/100克）</p>
+
+        <p>高GI碳水飲食建議:</p>
+        <p>1.白飯</p>
+        <p>2.馬鈴薯</p>
+        <p>3.南瓜</p>
+
+        <p>低GI碳水飲食建議:</p>
+        <p>1.玉米</p>
+        <p>2.燕麥</p>
+        <p>3.芭樂</p>
+        
+        <img src="https://www.lumez.com.tw/wp-content/uploads//image5-1.jpg" alt="image5-1" width="600" height="500">
+
+        <h2>二.蛋白質(Protein)</h2><p>蛋白質往往是合成肌肉最重要的營養素，也是飲食控制最先計算的營養素。一克的蛋白質大約可產生四大卡的熱量，蛋白質不僅能提供比較久的飽足感，不容易轉換成脂肪堆積，也是身體構築肌肉重要的建材。</p><p>一天的建議攝取量：體重每公斤攝取1.5~2.2克，運動員可到3克。</p> 
+        <p>一般的蛋白質來源：蛋、豆類、魚、肉、海鮮、乳製品</p>
+        <h2>三.脂肪(Fat)</h2><p>許多人常以為「吃油長油」，因此過去極低脂的水煮餐曾在健身/瘦身界大為流行，事實上脂肪是人體許多機能運作的必要營養，女性由於體內賀爾蒙的運作，又比男性更不適合極低脂飲食。一克的脂肪大約可產生九大卡的熱量。</p><p>一天的建議攝取量：體重每公斤攝取1克，試需求增減。</p>
+        <p>一般的脂肪來源可分為動物性脂肪及植物性脂肪來源：</p>
+        <p>動物性脂肪：肉類中的油脂等</p>
+        <p>植物性脂肪：橄欖油、花生油、葵花籽油、亞麻籽油、菜油等</p>
+
+        <h2>四.</h2>
+            <h2>(一)增肌飲食</h2><p>● 碳水化合物：50% - 60%</p>
+                 <p>● 蛋白質：25% - 30%</p>
+                 <p>● 脂肪：15% - 25%</p>
+            <h2>(二)減脂飲食</h2>
+                    <p>● 碳水化合物：30% - 40%</p>
+                    <p>● 蛋白質：35% - 45%</p>
+                    <p>● 脂肪：20% - 30%</p> 
+        <h2>五.增肌減脂運動推薦</h2>
+            <h2>(一)增肌減脂該選有氧運動還是無氧運動?</h2>
+            <h2>運動可分為有氧運動和無氧運動兩大類型</h2>
+            <p>● 有氧運動：運動時，主要會以氧氣參與代謝，來消耗人體的醣類和脂肪。一般來說需要持續進行 20 分鐘以上，心跳達到最大心率的 65-85 %，才能算是有氧運動。</p><p>● 常見的有氧運動包含騎單車、跑步、游泳、舞蹈、拳擊、韻律操等。</p>
+            <p>● 無氧運動：運動時，以無氧代謝進行能量轉化，主要消耗人體的肌酸和醣類，並藉由對肌纖維施予適當張力，使其為適應負重而成長，因此常被稱為肌力訓練。</p><p>● 常見的無氧運動包含深蹲、臥推、TRX 等重量訓練。
+            大家經常問「增肌減脂該選有氧還無氧運動？」我們的建議是：</p>
+            <p>● 增肌運動推薦無氧重訓，且減少有氧運動：原因是無氧重訓可以幫助肌肉生長，而有氧運動會對身體產生分解效應，有可能妨礙肌肉的生長。</p>
+            <p>● 減脂運動推薦有氧運動與重訓：原因是有氧運動可以提升胰島素敏感性。而重訓除了能有效提升肌力與肌耐力之外，也對維持身體肌肉量有助益。</p>
+            <p>增肌運動原則:</p><p>每週3-4次，以每次60分鐘為主，記得每個動作之間至少休息60秒。</p><p>增肌運動基本上以複合動作為主，像是弓箭步蹲、分腿蹲、深蹲等使用人體多個關節和大肌群的運動。在進行增肌運動時，可以漸漸地縮短中間的休息時間（以不少於60秒為限），來減少肌肉恢復的時間，這麼做對於雕塑體態果會更有幫助。</p>
+            <p>減脂運動原則:</p><p>減脂運動每週3-5次，以每次30-60分鐘為主，順序是先做重訓再有氧，並切記要定期補充水分，助於燃脂。</p><p>減脂最重要的就是要進行「高強度、低次數」的多關節運動，如果要達成「維持肌肉量」的目標的話，就要增加重訓的重量，並非提升訓練的次數。</p>
+        <h2>六.目標</h2>
+                 <p>● 維持體重</p>
+                 <p>● 減重</p>
+                 <p>● 增重</p>
+        <h2>七.活動程度(Activy)</h2><p>● 久坐不動，完全沒有運動習慣</p>
+
+                 <p>● 輕度活動，每周有 1 - 3 天的運動習慣</p>    
+            
+                 <p>● 中度活動，每周有 3 - 5 天的運動習慣</p>
+            
+                 <p>● 高度活動，每周有 6 - 7 天的運動習慣</p>
+   
+    <ul id="recordList"></ul>
+ 
+
+<script>
+  function calculateNutrition() {
+    var gender = document.getElementById("gender").value;
+    var age = parseInt(document.getElementById("age").value);
+    var height = parseInt(document.getElementById("height").value);
+    var weight = parseInt(document.getElementById("weight").value);
+    var activityLevel = document.getElementById("activityLevel").value;
+    var goal = document.getElementById("goal").value;
+
+    var basalMetabolicRate = (gender === 'male') ? 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age) : 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+    var activityFactor = 1.2;
+    if (activityLevel === 'light') {
+      activityFactor = 1.375;
+    } else if (activityLevel === 'moderate') {
+      activityFactor = 1.55;
+    } else if (activityLevel === 'intense') {
+      activityFactor = 1.725;
+    }
+    var totalCalories = basalMetabolicRate * activityFactor;
+
+    var carbPercentage, proteinPercentage, fatPercentage;
+
+    if (goal === 'fat_loss') {
+      carbPercentage = 0.4;
+      proteinPercentage = 0.3;
+      fatPercentage = 0.3;
+    } else if (goal === 'maintain') {
+      carbPercentage = 0.5;
+      proteinPercentage = 0.25;
+      fatPercentage = 0.25;
+    } else if (goal === 'muscle_gain') {
+      carbPercentage = 0.45;
+      proteinPercentage = 0.3;
+      fatPercentage = 0.25;
+    }
+
+    var carbGrams = Math.round((totalCalories * carbPercentage) / 4);
+    var proteinGrams = Math.round((totalCalories * proteinPercentage) / 4);
+    var fatGrams = Math.round((totalCalories * fatPercentage) / 9);
+
+    document.getElementById("carbs").innerText = carbGrams;
+    document.getElementById("protein").innerText = proteinGrams;
+    document.getElementById("fat").innerText = fatGrams;
+    document.getElementById("calories").innerText = Math.round(totalCalories);
+
+    document.getElementById("results").style.display = "block";
+  }
+</script>
+	
+
+</body>
+</html>

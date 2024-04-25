@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>睡眠品質評估</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  .container {
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>睡眠品質評估</h2>
+  <label for="hours">每晚睡眠時間（小時）：</label>
+  <input type="number" id="hours" min="0" required><br><br>
+  <label for="wakeups">每晚醒來次數：</label>
+  <input type="number" id="wakeups" min="0" required><br><br>
+  <button id="evaluateBtn">評估</button><br><br>
+  <div id="result"></div>
+  <div id="advice"></div>
+
+  <script>
+    document.getElementById('evaluateBtn').addEventListener('click', function() {
+      evaluate();
+    });
+
+    function evaluate() {
+      const hours = parseFloat(document.getElementById('hours').value);
+      const wakeups = parseInt(document.getElementById('wakeups').value);
+
+      if (isNaN(hours) || isNaN(wakeups) || hours <= 0 || wakeups < 0) {
+        document.getElementById('result').textContent = '請輸入有效的數字';
+        return;
+      }
+
+      let quality = '';
+      if (hours >= 7 && wakeups <= 1) {
+        quality = '優秀';
+      } else if (hours >= 6 && wakeups <= 2) {
+        quality = '良好';
+      } else if (hours >= 5 && wakeups <= 3) {
+        quality = '一般';
+      } else {
+        quality = '較差';
+      }
+
+      document.getElementById('result').textContent = `你的睡眠品質評估為：${quality}`;
+
+      displayAdvice(quality);
+    }
+
+    function displayAdvice(quality) {
+      let advice = '';
+      if (quality === '優秀') {
+        advice = '你的睡眠品質很好，繼續保持良好的睡眠習慣！';
+      } else if (quality === '良好') {
+        advice = '你的睡眠品質不錯，但仍有改善的空間，嘗試提高睡眠質量！';
+      } else if (quality === '一般') {
+        advice = '你的睡眠品質一般，需要注意改善睡眠環境和睡眠習慣！';
+      } else {
+        advice = '你的睡眠品質較差，建議儘快採取措施改善睡眠質量！';
+      }
+      document.getElementById('advice').textContent = advice;
+    }
+  </script>
+</div>
+</body>
+</html>
