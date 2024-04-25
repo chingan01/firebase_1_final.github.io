@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健身和健康指南網站</title>
+    <title>選擇工具</title>
+    <style>
+        /* Reset CSS */
+</head>
+<body>
+    <header>
+        <h1>健身和健康指南網站</h1>
+    </header>            
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+     
+        /* Body Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            line-height: 1.6;
+            color: #333;
+
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            color: #444;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        /* Navigation Styles */
+        nav a, select {
+            color: black; /* 淺一點的白色 */
+            text-decoration: none;
+            padding: 0.5em 1em;
+            margin: 0 0.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            background-color: #f0f0f0; /* 淺藍色背景 */
+            border: none;
+            font-size: 16px;
+        }
+
+
+        nav {
+            background-color: #1350ab6c;
+            text-align: center;
+            padding: 0.5em 0;
+
+            c0lor:#fff;
+        }
+
+        container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        topics {
+            display: none; /*初始隱藏所有主題內容*/
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        topic {
+            flex: 1;
+            padding: 20px;
+            border: 1px; solid #ccc;
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+
+        nav a {
+            color: #444;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            margin: 0 0.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #fff;
+        }
+        
+
+        header a{
+               color:blue;
+               text-decoration: none;
+        }
+
+        header a:hover {
+               text-decoration: underline;
+        }
+ 
+        header li {
+            display:inline;
+            margin-right:4vw;
+        }
+        /* Main Content Styles */
+        main {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Health Tools Styles */
+        .health-tool {
+            margin-top: 20px;
+        }
+
+        .health-tool h2 {
+            margin-bottom: 10px;
+        }
+
+        .health-tool a {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #1350ab;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .health-tool a:hover {
+            background-color: #0a3c7a;
+        }
+
+        <h1>健身和健康指南網站</h1>
+        .wrap{
+        max-width: 960px;
+      }
+      .header {
+        height: 80px;
+      }
+      .list li{
+        width: 33%;
+      }
+      .list h3{
+        font-size: 24px;
+      }
+      @media(max-width: 768px){
+        .header{
+          height: auto;
+        }
+        .list li{
+          width: 48%;
+          margin: 0 1%;
+        }
+      }
+      @media(max-width: 767px){
+        .list li{
+          width: 98%;
+        }
+      }
+      @media(max-width: 414px){
+        .list li{
+          font-size: 18px;
+        }
+      }
+
+        /* Image Gallery Styles */
+
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            margin-top: 20px;
+        }
+
+        .image-gallery a {
+            margin: 10px;
+            flex: 0 1 calc(30% - 20px);
+            max-width: 300px;
+            text-align: center;
+            text-decoration: none;
+        }
+ 
+        .image-18061 b{
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-gallery img {
+            max-width: 100%;
+            display:block;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+
+        h2 {
+            margin-bottom: 8px;
+        }
+
+        select {
+            padding: 5px;
+            margin-bottom: 10px;
+            width: 10%;
+        }
+
+        select a {
+            padding: 2px;
+            margin-bottom: 3px;
+            width: 60%;
+        }
+
+
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input,
+        textarea {
+            padding: 8px;
+            margin-bottom: 10px;
+            width: 100%;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>健身和健康指南網站</h1>
+        
+    </header>
+    <nav>
+
+    </nav>
+
+    <nav>
+        <a onclick="openTab('tab0')">首頁</a>
+        <a onclick="openTab('tab1')">相關文章</a>  
+        <a onclick="openTab('tab2')">健身計劃和教學</a> 
+        <a onclick="openTab('tab3')">營養建議</a>  
+        <select onchange="selectTool(this.value)">
+            <option value="">健康工具</option>
+            <option value="bmi">身體指數BMI計算器</option> 
+            <option value="Nutrition">營養計算器</option> 
+            <option value="bmr">基礎代謝率BMR計算機|TDEE計算機</option> 
+            <!-- 添加其他健康工具 -->  
+        </select >
+        <select onchange="selectTool(this.value)">
+            <option value="">尋找附近醫療資訊</option>
+            <option value="pharmacy">找藥局</option> 
+            <option value="clinic">找院所</option> 
+            <!-- 添加其他健康工具 -->  
+        </select >
+        
+    </nav>
+             
+    <main>
+        <!-- 主要內容區域-->
+    </main>
+
+    <script>
+        function openTab(tabName) {
+            var i, tabContent;
+            tabConent = document.getElementByClassName("tab-content");
+            for(i = 0; i < tabConent.length; i++) {
+                tabConent[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+        }
+
+
+        function navigateToSection(sectionId) {
+            if (sectionId){
+                openTab(sectionId);
+            }
+        }
+    </script>
+</body>
+</html>    
+
+<main>
+    <main>
+     <div id="tab0" class="tab-content active">
+        <div class="container">
+            <div class="image-18061 b">
+                <a href="file:///C:/Users/user/OneDrive/%E6%A1%8C%E9%9D%A2/firebase3(firebase2%E4%BB%A5%E5%8F%8Aplugins%E7%9A%84%E7%89%88%E6%9C%AC%E7%B5%90%E5%90%88)/%E8%AA%8D%E8%AD%986%E5%A4%A7%E9%A1%9E-3.html">
+                    <img src="18061.png" style="display:block; margin:auto;"/>
+                </a>
+        </div>
+        <h1>健身與健康</h1>
+        <p>歡迎來到我們的健身與健康網站！我們致力於提供最新的健身和健康資訊，幫助你達到健康的生活方式。</p>
+                
+        <div class="service">
+            <h2>我們的服務</h2>
+            <ul>
+                <li>關於文章：探索我們定期發布的深入文章，涵蓋健身、營養和心理健康等主題。讓我們幫助你深入了解健康知識，讓你的生活更健康、更美好！</li>
+                <li>健身計劃和教學：透過我們提供的各種健身計劃和教學影片，你將掌握有氧運動、力量訓練等方面的專業知識。無論你是初學者還是有經驗的運動員，我們都能幫助你制定出最有效的健身計劃 !</li>
+                <li>營養建議：探索我們精心挑選的健康飲食建議和美味食譜，讓你每天都能享受均衡營養的美味佳餚。我們的營養建議將幫助你實現健康飲食的目標，輕鬆打造健康生活！</li>   
+                <li class="health-tool">
+                    <h2>其他健康工具</h2>
+                    <a href="body water.html" id="pharmacy-link">水分計算器</a>
+                    <a href="Nutrition Calculator.html" id="clinic-link">營養計算器</a>
+                    <a href="sleep quality.html" id="forum-link">睡眠品質評估</a>
+                </li>
+            </ul>
+        </div> 
+    </div>
+</div>
+
+            
+    </div>
+     
+
+        <script>
+            function showTopic(topicNumber) {
+                // 先隱藏所有主題内容
+                var topics = document.getElementsByClassName("topics");
+                for (var i = 0; i < topics.length; i++) {
+                    topics[i].style.display = "none";
+                }
+                // 根據點擊的連結顯示對應的主題内容
+                var topicId = "topic" + topicNumber;
+                document.getElementById(topicId).style.display = "block";
+            }
+        </script>
+    </body>
+    </html>
+
+
+        <div id="tab1" class="tab-content active">
+            <h2>相關文章</h2>   
+            <p>這裡是一些最新的相關文章的列表：</p>
+            <ul>
+                <li><a href="https://www.cw.com.tw/article/5083980">如何開始一個健康的生活方式</a></li>
+                <li><a href="https://www.aia.com/zh-hk/health-wellness/healthy-living/healthy-mind/Mental-health-and-body">心理健康的重要性</a></li>
+                <li><a href="https://www.commonhealth.com.tw/article/78425">五種最有效的健身運動</a></li>
+            <h3>健康相關資訊連結 :</h3>    
+			<div class="image-gallery b">
+            <a href="https://heho.com.tw/"><img src="image1.jpg" alt="Image 1"></a>
+			<a href="https://health99.hpa.gov.tw/"><img src="image2.jpg" alt="Image 2"></a>
+			<a href="https://www.edh.tw/"><img src="image3.jpg" alt="Image 3"></a>
+			<!-- 第一行 -->
+			<a href="https://health.ltn.com.tw/"><img src="image4.jpg" alt="Image 4"></a>
+			<a href="https://health.businessweekly.com.tw/new"><img src="image5.jpg" alt="Image 5"></a>
+			<a href="https://www.dradvice.com/ec99/rwd1031/category.asp?category_id=99"><img src="image6.jpg" alt="Image 6"></a>
+			<!-- 第二行 -->
+            </ul>
+			</div>
+        </div>
+        <div id="tab2" class="tab-content">
+            <h2>健身計劃和教學</h2>
+            <p>這裡是一些健身計劃和教學的內容：</p>
+            <ul>
+                <li><a href="https://superfit.com.tw/all/aerobic-exercise/">有氧運動計劃</a></li>
+                <li><a href="https://eagersport.online/023-2/">力量訓練計劃</a></li>
+                <li><a href="https://blog.worldgymtaiwan.com/stretching-keeps-your-healthy">伸展和靜態運動教學</a></li>
+                
+            </ul>
+            <h2>健身計劃</h2>
+            <div class="image-gallery"> 
+            <a href="https://helloyishi.com.tw/fitness/fitness-safety-tips/prevent-injury-with-right-running-technique/"><img src="01.jpg" alt="01" width="200" height="150"></a>
+            <h3>跑步姿勢教學</h3><p>正確的跑步姿勢包括視線往前看、抬頭挺胸、收腹、保持身體自然往前傾斜、手臂90度自然彎曲擺動等。 跑步時身體微微前傾，可幫助步伐更自然地往前跨，避免為了刻意加大步伐而過於用力，再搭配能給予緩震和穩定支稱的跑鞋輔助，可減少受傷風險。</p>
+			<a href="https://www.decathlon.com.hk/zh/c/htc/_1857e08a-88f3-4570-a711-3e1263e5b359"><img src="02.jpg" alt="02" width="200" height="150"></a>
+            <h3>籃球運動教學</h3><p>在籃球世界裡，籃球是必須保持移動而要做到這一點，你必須通過控制地面回彈上來的籃球來運球。但是怎樣運球？如何理解好傳球的標準？如何學習打籃球的基本技術？要打好籃球，你必須要有好傳球的技術。我們在這裡為你提供幾個學打籃球的小貼士。在開始打籃球之前，先開始大約5分鐘 無球的熱身。</p>
+			<a href="https://blog.decathlon.tw/yu-qiu-qing-song-shang-shou-yu-qiu-ji-qiao-wan-zheng-gong-lue"><img src="03.jpg" alt="03" width="200" height="150" ></a>
+            <h3>羽球運動教學</h3><p>羽球是一項非常平易近人的運動，不用太高的天賦與資質，只要拿起球拍能揮到球，任何時候都可以跟家人或朋友在公園暢快打球一下午。但如果你想進入球館打球，並打出與國手相似的身影，就需要去了解一些基本技巧並勤加練習，這樣即使無法打進奧運，看球賽的時候也會相當有樂趣。</p>
+			</script>
+			</div>
+        </div>
+			<div id="tab3" class="tab-content">
+                
+                <h2>營養建議</h2>
+                <p>這裡是一些健身計劃和教學的內容：</p>
+                <h2>常見問題解答</h2>
+				<h3>1. 如何保持均衡飲食？</h3>
+				<p>均衡飲食意味著吃各種不同種類的食物，包括水果、蔬菜、全穀類、蛋白質來源和健康脂肪。每天喝足夠的水也很重要。</p>
+
+				<h3>2. 哪些食物有助於提高免疫力？</h3>
+				<p>一些富含維生素C、維生素D、鋅和抗氧化劑的食物，如柑橘類水果、草莓、菠菜、堅果和魚類，可以幫助提高免疫力。</p>
+
+				<h2>營養食譜</h2>
+				<h3>1. 蔬菜沙拉</h3>
+				<p>將新鮮蔬菜如生菜、番茄、黃瓜、胡蘿蔔和鱷梨切成塊，加入橄欖油和醋，撒上少許鹽和黑胡椒即可。</p>
+                <img src="salad.jpg" alt="蔬菜沙拉">
+
+				<h3>2. 烤雞胸肉配烤蔬菜</h3>
+				<p>在烤盤上放上雞胸肉和切好的蔬菜，撒上鹽、胡椒和橄欖油，放入預熱至180°C的烤箱中烤約25-30分鐘。</p>
+				<img src="chicken_veggies.jpg" alt="烤雞胸肉配烤蔬菜">
+
+				<h2>注意事項</h2>
+				<p>雖然我們提供的建議有助於保持健康的生活方式，但請注意每個人的身體狀況和需求可能有所不同。在做出任何飲食或生活方式改變之前，請諮詢醫生或營養師的建議。</p>
+
+				<h2>其他營養資訊</h2>
+				<h3>3. 健康的零食選擇</h3>
+				<p>如果你需要吃零食，選擇一些健康的選擇，如水果、堅果、酸奶、蔬菜沙拉等，而不是高糖和高脂肪的零食。</p>
+
+				<h3>4. 飲食中的蛋白質</h3>
+				<p>蛋白質是身體建造和修復組織的基本組成部分，包括肌肉、皮膚和髮絲。優質的蛋白質來源包括雞肉、魚、豆類和奶製品。</p>
+    
+    <h2>影片資訊(以下相關使用者的教學影片)</h2>            
+    <select id="healthTools" name="healthTools" onchange="changeVideo(this.value)">
+        <option value="1">給休閒者</option>
+        <option value="2">給想減肥者</option>
+        <option value="3">給健身者</option>
+    </select>
+    <div id="video-container"></div>
+
+    <script>
+        function changeVideo(value) {
+            var videoContainer = document.getElementById('video-container');
+            var videoLink;
+
+            switch (value) {
+                case '1':
+                    videoLink = 'https://www.youtube.com/embed/7ycbPf6m-7c';
+                    break;
+                case '2':
+                    videoLink = 'https://www.youtube.com/embed/vJhiPXsMFjI';
+                    break;
+                case '3':
+                    videoLink = 'https://www.youtube.com/embed/R0C-S9ZOhzE';
+                    break;
+                default:
+                    videoLink = 'https://www.youtube.com/embed/7ycbPf6m-7c';
+            }
+
+            videoContainer.innerHTML = '<iframe width="560" height="315" src="' + videoLink + '" frameborder="0" allowfullscreen></iframe>';
+        }
+    </script>
+    </div>
+        </div>
+    
+        <div id="tab4" class="tab-content">
+            <div class="bmi">
+                <iframe src="file:///C:/Users/user/OneDrive/%E6%A1%8C%E9%9D%A2/firebase3(firebase2%E4%BB%A5%E5%8F%8Aplugins%E7%9A%84%E7%89%88%E6%9C%AC%E7%B5%90%E5%90%88)/bmi-3_test3.html" width="100%" height="600" style="border:0;"></iframe>
+            </div>
+        </div>
+
+        <div id="tab5" class="tab-content">
+            <div class="Nutrition">
+                <iframe src="file:///C:/Users/user/OneDrive/%E6%A1%8C%E9%9D%A2/firebase3(firebase2%E4%BB%A5%E5%8F%8Aplugins%E7%9A%84%E7%89%88%E6%9C%AC%E7%B5%90%E5%90%88)/%E7%87%9F%E9%A4%8A%E8%A8%88%E7%AE%97%E5%99%A8-6.html" width="100%" height="600" style="border:0;"></iframe>
+            </div>
+        </div>
+
+        <div id="tab6" class="tab-content">
+            <div class="bmr">
+                <iframe src="file:///C:/Users/user/OneDrive/%E6%A1%8C%E9%9D%A2/firebase3(firebase2%E4%BB%A5%E5%8F%8Aplugins%E7%9A%84%E7%89%88%E6%9C%AC%E7%B5%90%E5%90%88)/Untitle-2.html" width="100%" height="600" style="border:0;"></iframe>
+            </div>
+        </div>
+
+        <div id="tab7" class="tab-content">
+            <div class="pharmacy">
+                <h2>找藥局</h2>
+                <p>您可以在下面的地圖中找到附近的藥局：</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20693.1916351108!2d120.55778410636482!3d24.11513416711202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346ecfbf7cdebe65%3A0x258dfb5d25be0d09!2z5ZyL56uL6Zmi5bGx!5e0!3m2!1szh-TW!2stw!4v1654064404532!5m2!1szh-TW!2stw" width="100%" height="600" style="border:0;"></iframe>
+            </div>
+        </div>
+
+        <div id="tab8" class="tab-content">
+            <div class="clinic">
+                <h2>找院所</h2>
+                <p>您可以在下面的地圖中找到附近的診所：</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20693.1916351108!2d120.55778410636482!3d24.11513416711202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346ecfbf7cdebe65%3A0x258dfb5d25be0d09!2z5ZyL56uL6Zmi5bGx!5e0!3m2!1szh-TW!2stw!4v1654064404532!5m2!1szh-TW!2stw" width="100%" height="600" style="border:0;"></iframe>
+            </div>
+        </div>
+
+    </div>
+    <div id="tab9" class="tab-content ">
+        <h2><a href="new 7.html"></a></h2>
+            <div class="image-gallery">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase 登入網站</title>
+    <link rel="stylesheet" href="styles.css">
+<body>
+  <h1>登入</h1>
+  <h2><a log-in會員登入></alog-in></a></h2>
+<br>
+  <form id="loginForm">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br>
+    <label for="password">密碼:</label>
+    <input type="password" id="password" name="password" required><br>
+    <button type="submit">登入</button>  
+  </form>
+  
+  <p id="message"></p>
+
+  <script src="http://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"></script>
+  <script src="http://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js"></script>
+  <script>
+    //Firebase 初始化配置
+ 
+    var firebaseConfig= {
+        apiKey: "AIzaSyBh6WztyzsjfKLuNCGDzaVqCV7BVVFhpOM",
+        authDomain: "test-addd1-535f8.firebaseapp.com",
+        databaseURL: "https://test-addd1-535f8-default-rtdb.firebaseio.com",
+        projectId: "test-addd1-535f8",
+        storageBucket: "test-addd1-535f8.appspot.com",
+        messagingSenderId: "914084141456",
+        appId: "1:914084141456:web:764d51e16359cdbb65fb15"
+};
+
+    // 初始化 Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // 獲取登入表單
+    var loginForm = document.getElementById('loginForm');
+    var message = document.getElementById('message');
+
+    // 處理登入表單提交事件
+    loginForm.addEventListener('submit', function(event) {
+      event.preventDefault()); // 防止表單自動提交
+    
+      var email = loginForm.email.value;
+      var password = loginForm.password.value;
+
+      // 使用 Firebase 身份驗證服務進行登入
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential)) => ({
+          //登入成功 , 顯示訊息  
+          message.textContent = "登入成功!";
+        })  
+
+     <script src="http://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"></script>
+     <script src="http://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js"></script>
+     <script>
+       // Firebase 初始化配置
+      
+       var firebaseConfig = {
+       apiKey: "AIzaSyBh6WztyzsjfKLuNCGDzaVqCV7BVVFhpOM",
+       authDomain: "test-addd1-535f8.firebaseapp.com",
+       databaseURL: "https://test-addd1-535f8-default-rtdb.firebaseio.com",
+       projectId: "test-addd1-535f8",
+       storageBucket: "test-addd1-535f8.appspot.com",
+       messagingSenderId: "914084141456",
+       appId: "1:914084141456:web:764d51e16359cdbb65fb15"
+};
+
+
+
+     <div>  
+       // 初始化 Firebase
+       firebase.initializeApp(firebaseConfig);
+       
+       //獲取登入表單
+       var loginForm = document.getElementById('loginForm');
+       var message = document.getElementById('message');
+
+       // 處理登入表單提交事件
+       loginForm.addEventListener('submit', function(event))
+         event.preventDefault();
+
+         var email = loginForm.email.value;
+         var password = loginForm.password.value;
+
+         // 使用 Firebase 身份驗證服務進行登入
+         firebase.auth().signInWithEmailAndPassword(email, password)
+           .then((userCredential)) => {
+             //登入成功,顯示訊息
+             message.textContent = "登入成功! ";
+           }
+           .catch((error)) => {
+             //登入失敗,顯示錯誤訊息
+             var errorMessage = error.message;
+             message.textContent = "登入失敗: " + errorMessage;
+           };
+        };
+      </div>       
+    </script>
+</body>
+</html>
+
+<script>
+        function openTab(tabName) {
+            var i, tabContent;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+        }
+
+        function selectTool(tool) {
+            if (tool === 'bmi') {
+                openTab('tab4');
+            } else if (tool === 'Nutrition') {
+                openTab('tab5');
+            } else if (tool === 'bmr') {
+                openTab('tab6');
+            } else if (tool === 'pharmacy') {
+                openTab('tab7');
+            } else if (tool === 'clinic') {
+                openTab('tab8');
+            }
+        }   
+        
+       
+    </script>
+
+    <script>
+        document.getElementById('healthTools').addEventListener('change', function() {
+            var selectedTool = this.value;
+
+            // 根據選擇的健康工具，導向到相應的連結
+            if (selectedTool === 'bmi') {
+                window.location.href = 'https://health99.hpa.gov.tw/oe';
+            } else if (selectedTool === 'stress') {
+                window.location.href = 'https://health99.hpa.gov.tw/op';
+            } else if (selectedTool === 'hypertension') {
+                window.location.href = 'https://health99.hpa.gov.tw/oh';
+            } else if (selectedTool === 'cardiovascular') {
+                window.location.href = 'https://health99.hpa.gov.tw/ochd';
+            }
+        });
+    </script>
+			
+   
+
+    </main>
+
+    <script>
+        function openTab(tabName) {
+            var i, tabContent;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+        }
+		function login() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        // 在實際應用中，應該使用AJAX將用戶名和密碼發送到後端進行驗證
+        // 這裡僅提供簡單的客戶端檢查
+        if (username === "user" && password === "pass") {
+            document.getElementById("login-form").style.display = "none";
+            document.getElementById("content").style.display = "block";
+        } else {
+            alert("Invalid username or password");
+        }
+    }
+
+    function changeTab(tabNumber) {
+        // 隱藏所有分頁內容
+        var tabs = document.getElementsByClassName("content");
+        for (var i = 0; i < tabs.length; i++) {
+            tabs[i].style.display = "none";
+        }
+
+        // 顯示選定的分頁內容
+        document.getElementById("tab" + tabNumber).style.display = "block";
+
+        // 在分頁標籤上添加活動樣式
+        var tabButtons = document.getElementsByClassName("tab");
+        for (var i = 0; i < tabButtons.length; i++) {
+            tabButtons[i].classList.remove("active-tab");
+        }
+        tabButtons[tabNumber - 1].classList.add("active-tab");
+    }
+
+    
+
+    </script>
+</body>
+</html>
